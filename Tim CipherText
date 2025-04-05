@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+long long mod_pow(long long base, long long exp, long long mod) {
+    long long result = 1;
+    base = base % mod;
+    
+    while (exp > 0) {
+        if (exp % 2 == 1) { // nếu lẻ
+            result = (result * base) % mod;
+        }
+        base = (base * base) % mod;
+        exp = exp / 2;
+    }
+    return result;
+}
+
+int main() {
+    long long m, e, n;
+    cout << "Nhap m, e, n: ";
+    cin >> m >> e >> n;
+
+    long long ciphertext = mod_pow(m, e, n);
+    cout << "Cipher text: " << ciphertext << endl;
+
+    return 0;
+}
